@@ -1,0 +1,9 @@
+create project Blogs: 
+	1. app (blog)     
+	2. create base template to be a parent for all pages 
+	3. create landing page for home page(nav  [links to all pages]+ footer + sidebar) 
+	4. create page for all blogs [include link to show blog details]
+	5. create page to show blog details  
+	6. some static files to be applied om my code including (imges / google fonts / css files (outer resource) / some js funs )
+	7. create model for blog(include  different fields with required image field) 
+	8. create super user and then apply crud operation in Blog model 
