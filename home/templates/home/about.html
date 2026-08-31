@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="p-3">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-md-6 mx-auto mb-3">
+                <h2>About</h2>
+                <hr />
+                <p>
+                    <h3 style="font-weight: 600;">Explore the World of Movies with Movies Store</h3>
+                    Movies Store brings everything you need for a great movie experience into one simple and easy-to-use
+                    platform. From exciting new releases to unforgettable classics, our store gives movie fans the
+                    opportunity to explore a wide range of titles in one place.
+                    Whether you're searching for something to watch on a relaxing evening or looking for a movie that
+                    matches your mood, Movies Store makes discovering new favorites simple. Browse different genres,
+                    explore movie details, and choose the titles that interest you with a smooth and convenient
+                    experience.
+                    Our goal is to make movie discovery easier while giving you a platform where you can find, explore,
+                    and enjoy the movies you love.
+                </p>
+            </div>
+            <div class="col-md-6 mx-auto mb-3 text-center">
+                <img src="{% static 'img/about.jpg' %}" alt="about img" class="max-width=100">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
