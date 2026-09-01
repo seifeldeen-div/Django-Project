@@ -1,0 +1,38 @@
+% from blog.models import Blog
+% from blog.models import User
+% from django.db.models import Count
+
+! 1:- Write a Django ORM query to get all records from the Blog table.
+- Blog.objects.all()
+--------------------------------------------------------------------------------------------
+
+! 2:- Write a query to get all blogs where the title contains "python".
+- Blog.objects.filter(name__icontains='python')
+--------------------------------------------------------------------------------------------
+
+! 3:- Write a query to get all blogs created by the user with id = 3.
+- Blog.objects.filter(user__id=3)
+- Blog.objects.get(id=3)
+--------------------------------------------------------------------------------------------
+
+! 4:- Write a query to retrieve the 5 newest blogs based on created_at.
+x Tried to solve, but couldn't
+--------------------------------------------------------------------------------------------
+
+! 5:- Write a query to get all blogs except the ones written by a specific author.
+- Blog.objects.exclude(user__id=2)
+--------------------------------------------------------------------------------------------
+
+! 6:- Write a query to get all blogs written by users whose username starts with "a".
+- Blog.objects.filter(user__name__istartswith= 'a')
+--------------------------------------------------------------------------------------------
+
+! 7:- Write a query to get the total number of blogs in the database.
+- Blog.objects.Coun()
+--------------------------------------------------------------------------------------------
+
+! 8:- Write a query that returns each user with the number of blogs they wrote.
+- users = User.objects.annotate(blog_count=Count('blogs'))
+- for user in users:
+-   print(user.name, user.blog_count)
+--------------------------------------------------------------------------------------------
