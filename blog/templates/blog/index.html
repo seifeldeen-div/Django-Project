@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
 <div class="p-3">
     <div class="container">
         <div class="row mt-3">
@@ -13,7 +12,7 @@
             {% for d in context.data %}
             <div class="col-md-4 col-lg-3 mb-2 ">
                 <div class="p-2 card align-items-center pt-4">
-                    <img src="{% static d.url %}" alt="image" class="card-img-top rounded">
+                    <img src="{{ d.image.url }}" alt="image" class="card-img-top rounded img-card-200">
                     <div class="card-body text-center">
                         <h5>{{ d.name }}</h5>
                         <p class="mb-1">Price: ${{ d.price }}</p>
