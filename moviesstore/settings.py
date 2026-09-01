@@ -68,8 +68,12 @@ WSGI_APPLICATION = 'moviesstore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DjangoSql',
+        'USER' : 'postgres',
+        'PASSWORD' : '112006',
+        'HOST' : 'Localhost',
+        'PORT' : '5432'
     }
 }
 
@@ -114,8 +118,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Additional locations of static files
 STATICFILES_DIRS = [
     BASE_DIR / 'home' / 'static',
+    BASE_DIR / 'moviesstore' / 'static',
 ]
-
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
@@ -125,11 +129,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
-
-
-STATICFILES_DIRS = [
-    BASE_DIR/ 'moviesstore/static'
-]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
