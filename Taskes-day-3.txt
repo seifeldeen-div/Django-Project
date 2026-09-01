@@ -16,7 +16,7 @@
 --------------------------------------------------------------------------------------------
 
 ! 4:- Write a query to retrieve the 5 newest blogs based on created_at.
-x Tried to solve, but couldn't
+- Blog.objects.filter('-created_at')[0:5]
 --------------------------------------------------------------------------------------------
 
 ! 5:- Write a query to get all blogs except the ones written by a specific author.
