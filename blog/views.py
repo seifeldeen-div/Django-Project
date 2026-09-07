@@ -60,10 +60,8 @@ def create(request):
         if form.is_valid():
             form.save()
             return redirect('blog.index')
-
     else:
         form = BlogForm()
-
     data['form'] = form
     return render(request, 'blog/create3.html', {'data': data})
 
@@ -82,7 +80,7 @@ def edit(request,id):
         data['form'] = form
     return render(request, 'blog/edit.html', {"data":data})
 
-
+# delete Blog
 def delete(request,id):
     blog = Blog.objects.get(id=id)
     blog.delete()

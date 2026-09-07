@@ -16,4 +16,33 @@ class BlogForm(forms.ModelForm):
         # fields = ['name', 'price', 'description', 'image']
         fields = '__all__'  # get all fields
         # exclude = ['id'] get all data except id
+        widgets = {
+    'name': forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter Blog Name'
+    }),
+
+    'price': forms.NumberInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter Price'
+    }),
+
+    'description': forms.Textarea(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter Blog Description, please',
+        'rows': 6
+    }),
+
+    'image': forms.ClearableFileInput(attrs={
+        'class': 'form-control'
+    }),
+
+    'category': forms.Select(attrs={
+        'class': 'form-select'
+    }),
+
+    'user': forms.Select(attrs={
+        'class': 'form-select'
+    }),
+}
 
