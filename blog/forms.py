@@ -46,3 +46,37 @@ class BlogForm(forms.ModelForm):
     }),
 }
 
+    # validations
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if len(name) < 10:
+            raise forms.ValidationError(
+                'Name must be at least 10 chars'
+            )
+        return name
+
+    def clean_description(self):
+        description = self.cleaned_data['description']
+        if not description.strip():
+            raise forms.ValidationError(
+                'Description cannot be empty'
+            )
+        return description
+
+    # def clean(self):
+    #     cleaned_data = super().clean()
+
+    #     name = cleaned_data.get('name', '')
+    #     description = cleaned_data.get('description', '')
+
+    #     forbidden_words = ['spam', 'hack', 'badword']
+
+    #     text = f'{name} {description}'.lower()
+
+    #     for word in forbidden_words:
+    #         if word in text:
+    #             raise forms.ValidationError(
+    #                 f'The word "{word}" is not allowed.'
+    #             )
+
+    #     return cleaned_data
