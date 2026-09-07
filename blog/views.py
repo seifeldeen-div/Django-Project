@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Blog
 from .forms import BlogForm
 
@@ -32,23 +32,58 @@ def show(request, id):
 #         )
 #         return redirect('blog.index')
 #     return render(request, 'blog/create.html')
+# ---------------------------------------------------------------------------------------
+# def create(request):
+#     data = {}
 
+#     if request.method == 'POST':
+#         form = BlogForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             Blog.objects.create(
+#                 name = form.cleaned_data['name'],
+#                 price = form.cleaned_data['price'],
+#                 description = form.cleaned_data['description'],
+#                 image = form.cleaned_data['image']
+#             )
+#             return redirect('blog.index')
+
+#     else:
+#         form = BlogForm()
+
+#     data['form'] = form
+#     return render(request, 'blog/create2.html', {'data' : data })
+# ----------------------------------------------------------------------------------------
 def create(request):
     data = {}
-
     if request.method == 'POST':
         form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
-            Blog.objects.create(
-                name = form.cleaned_data['name'],
-                price = form.cleaned_data['price'],
-                description = form.cleaned_data['description'],
-                image = form.cleaned_data['image']
-            )
+            form.save()
             return redirect('blog.index')
 
     else:
         form = BlogForm()
 
     data['form'] = form
-    return render(request, 'blog/create2.html', {'data' : data })
+    return render(request, 'blog/create3.html', {'data': data})
+
+
+# Editing Blog
+def edit(request,id):
+    blog = Blog.objects.get(id=id)
+    data = {}
+    if request.method == "POST":
+        form = BlogForm(request.POST, request.FILES, instance= blog)
+        if form.is_valid():
+            form.save()
+        return redirect('blog.show', id=id)
+    else:
+        form = BlogForm(instance= blog)
+        data['form'] = form
+    return render(request, 'blog/edit.html', {"data":data})
+
+
+def delete(request,id):
+    blog = Blog.objects.get(id=id)
+    blog.delete()
+    return redirect('blog.index')

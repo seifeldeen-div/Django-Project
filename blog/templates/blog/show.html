@@ -8,9 +8,16 @@
                 <hr />
                 <p><b>Description:</b> {{ blog.description }}</p>
                 <p><b>Price:</b> ${{ blog.price }}</p>
+                <a class="btn btn-warning" href="{% url 'blog.edit' id=blog.id %}">EDIT</a>
+                <form method="POST" action="{% url 'blog.delete' id=blog.id %}" class="d-inline">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">DELETE</button>
+                </form>
             </div>
             <div class="col-md-6 mx-auto mb-3 text-center">
-                <img src="{{ blog.image.url }}" class="rounded img-card-200" alt="image" />
+                {% if blog.image %}
+                    <img src="{{ blog.image.url }}" class="rounded img-card-200" alt="image" />
+                {% endif %}
             </div>
         </div>
     </div>
